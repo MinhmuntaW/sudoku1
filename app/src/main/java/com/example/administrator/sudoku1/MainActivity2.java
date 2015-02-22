@@ -1,8 +1,11 @@
 package com.example.administrator.sudoku1;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,7 +14,7 @@ import java.util.ArrayList;
 
 
 public class MainActivity2 extends ActionBarActivity {
-
+    SudokuDBHelper helper;
 
 
     @Override
@@ -20,21 +23,67 @@ public class MainActivity2 extends ActionBarActivity {
         setContentView(R.layout.activity_main_activity2);
     }
     public void level4clicked(View v){
-
-        Intent a = new Intent(this,MainActivity3.class);
+      Intent i;
+//      Intent a;
       int [] model;
-        model = new int[]{0,0,0,0,0,0,0,0,0,
-                          1, 1, 1, 0, 1, 1, 1, 1, 1,
-                          1, 1, 1, 1, 1, 1, 1, 1, 1,
-                          1, 1, 1, 1, 1, 1, 1, 1, 1,
-                          1, 1, 1, 1, 1, 1, 1, 1, 1,
-                          1, 1, 1, 1, 1, 1, 1, 1, 1,
-                          1, 1, 1, 1, 1, 1, 1, 1, 1,
-                          1, 1, 1, 1, 1, 1, 1, 1, 1,
-                          1, 1, 1, 1, 1, 1, 1, 1, 1};
-        a.putExtra("value",model);
-        startActivity(a);
+        int id = v.getId();
+        switch(id) {
+            case R.id.btEasy:
+                i = new Intent(this,MainActivity3.class);
+
+                model = new int[]{0,0,0,0,8,0,0,1,0,
+                        0,8,0,0,0,0,0,2,0,
+                        0,0,9,1,7,0,3,4,0,
+                        0,0,0,2,0,3,5,0,0,
+                        7,0,3,4,5,8,1,0,2,
+                        0,0,6,7,0,9,0,0,0,
+                        0,2,8,0,3,4,7,0,0,
+                        0,7,0,0,0,0,0,9,0,
+                        0,3,0,0,9,0,0,0,0};
+                i.putExtra("value",model);
+                 i.putExtra("difficulty", "Easy");
+
+                startActivity(i);
+                break;
+            case R.id.btMedium:
+                i = new Intent(this,MainActivity3.class);
+
+                model = new int[]{3,4,0,0,0,0,0,0,5,
+                        0,0,0,0,0,0,0,0,1,
+                        0,0,0,2,6,5,0,0,0,
+                        0,0,8,0,1,0,4,0,0,
+                        0,0,9,8,0,7,6,0,0,
+                        0,0,7,0,3,0,2,0,0,
+                        0,0,0,4,8,3,0,0,0,
+                        5,0,0,0,0,0,0,0,0,
+                        6,0,0,0,0,0,0,8,7};
+                i.putExtra("value",model);
+                i.putExtra("difficulty", "Norm");
+
+                startActivity(i);
+
+                break;
+            case R.id.btHard:
+                i = new Intent(this,MainActivity3.class);
+
+                model = new int[]{4,9,7,6,0,0,0,0,5,
+                        6,0,0,3,0,0,0,0,1,
+                        2,0,5,1,0,0,0,0,0,
+                        9,1,8,0,0,0,0,8,0,
+                        0,0,0,0,0,0,0,0,0,
+                        0,0,0,0,0,0,5,0,1,
+                        0,0,0,0,0,2,9,3,5,
+                        0,0,0,0,0,5,0,0,4,
+                        0,0,0,0,0,9,1,0,2};
+                i.putExtra("value",model);
+                i.putExtra("difficulty", "Hard");
+
+                startActivity(i);
+                break;
+
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

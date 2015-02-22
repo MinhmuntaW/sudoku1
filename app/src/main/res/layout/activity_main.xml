@@ -5,19 +5,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
 
-    android:background="#ff000000"
+    android:background="#ffffe9d5"
     android:id="@+id/MainL">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SUDOKU"
-        android:id="@+id/textView"
-        android:textSize="50dp"
-        android:textColor="#fff"
-        android:layout_marginTop="184dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -26,25 +15,23 @@
         android:id="@+id/button"
         android:width="200dp"
         android:textSize="20dp"
-        android:background="#ffff7a9c"
-        android:textColor="#fff"
-        android:layout_marginTop="65dp"
-        android:layout_alignStart="@+id/textView"
-        android:layout_below="@+id/textView"
+        android:background="#ff472816"
+        android:textColor="#ffffead7"
         android:longClickable="false"
-        android:onClick="buttonClicked" />
+        android:onClick="buttonClicked"
+        android:layout_marginBottom="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-    <Button
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BEST TIME"
-        android:id="@+id/button2"
-        android:layout_marginTop="44dp"
-        android:width="200dp"
-        android:textSize="20dp"
-        android:textColor="#ffffffff"
-        android:background="#ff4bc5ff"
-        android:layout_below="@+id/button"
-        android:layout_alignStart="@+id/button" />
+        android:id="@+id/imageView"
+        android:src="@drawable/s1"
+        android:minWidth="300dp"
+        android:minHeight="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 
 </RelativeLayout>
