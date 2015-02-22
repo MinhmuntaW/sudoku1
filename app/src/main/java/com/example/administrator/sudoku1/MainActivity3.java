@@ -81,7 +81,7 @@ public class MainActivity3 extends ActionBarActivity {
 
 
                         TextView result = (TextView) findViewById(R.id.txtResult);
-                        result.setText(String.format("%02d:%02d", minutes, seconds));
+                        result.setText(String.format("  %02d:%02d", minutes, seconds));
                         totaltime = minutes;
 
 
@@ -127,7 +127,7 @@ public class MainActivity3 extends ActionBarActivity {
 
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
             menu.setHeaderIcon(android.R.drawable.btn_star_big_on);
-
+            
             menu.setHeaderTitle("Are you want to quite");
 
             String [] menuItems = Cmd;
@@ -242,7 +242,7 @@ public class MainActivity3 extends ActionBarActivity {
         pause=1;
         setmatrix();
 
-        if(isValid(board)){
+        if(!isValid(board)){
 
             Toast.makeText(MainActivity3.this,"Oops! Try again", Toast.LENGTH_SHORT).show();
         }

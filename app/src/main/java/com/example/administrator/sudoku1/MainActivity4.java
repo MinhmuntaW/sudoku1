@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity4 extends ActionBarActivity {
@@ -24,6 +25,7 @@ public class MainActivity4 extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity4);
+        Toast.makeText(MainActivity4.this, "Congratulations!", Toast.LENGTH_SHORT).show();
         Intent data = this.getIntent();
 
         String diff = data.getStringExtra("difficulty");
@@ -54,7 +56,7 @@ public class MainActivity4 extends ActionBarActivity {
 
                 TextView tv = (TextView) findViewById(textViewIds[i]);
 
-                tv.setText("      "+Integer.toString(i + 1) + "                     " + cursor.getString(0) + "               " + String.format("%02d",cursor.getInt(1)) + " : " + String.format("%02d", cursor.getInt(2)));
+                tv.setText("      "+Integer.toString(i + 1) + "                     " + cursor.getString(0) + "                " + String.format("%02d",cursor.getInt(1)) + " : " + String.format("%02d", cursor.getInt(2)));
 
 
                 System.out.println(cursor.getString(0) + cursor.getInt(1) + cursor.getInt(2));
