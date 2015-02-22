@@ -38,7 +38,7 @@ public class MainActivity3 extends ActionBarActivity {
     int [][]board ;
     String [] Cmd={"Yes","No"};
     EditText valueTV[][] = new EditText[9][9];
-  //  Intent data = this.getIntent();
+
     String diff;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class MainActivity3 extends ActionBarActivity {
         int[] input = model.getIntArrayExtra("value");
         diff = model.getStringExtra("difficulty");
 
-      //  String diff = model.getStringExtra("difficulty");
+
 
        fromPuzzleString(input);
         starttime=SystemClock.uptimeMillis();
@@ -60,11 +60,7 @@ public class MainActivity3 extends ActionBarActivity {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
-//                            Calendar c = Calendar.getInstance();
-//
-//                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//
-//                        String formattedDate = df.format(c.getTime());
+
                         if(pause==0){
                             seconds++;
                         }
@@ -73,12 +69,7 @@ public class MainActivity3 extends ActionBarActivity {
                         }
 
                         seconds= seconds %60;
-//                        long millis= SystemClock.uptimeMillis()-starttime;
-//                        int seconds = (int) (millis / 1000);
 //
-//                        int   minutes = seconds / 60;
-//                        seconds     = seconds % 60;
-
 
                         TextView result = (TextView) findViewById(R.id.txtResult);
                         result.setText(String.format("  %02d:%02d", minutes, seconds));
@@ -127,7 +118,7 @@ public class MainActivity3 extends ActionBarActivity {
 
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
             menu.setHeaderIcon(android.R.drawable.btn_star_big_on);
-            
+
             menu.setHeaderTitle("Are you want to quite");
 
             String [] menuItems = Cmd;
@@ -158,7 +149,6 @@ public class MainActivity3 extends ActionBarActivity {
 
 
         RelativeLayout RL = (RelativeLayout) findViewById(R.id.MainL);
-        //LinearLayout layout = (LinearLayout) findViewById(R.id.info);
 
 
         for (int i = 0; i < 9; i++) {
@@ -178,7 +168,7 @@ public class MainActivity3 extends ActionBarActivity {
                 valueTV[i][j].setId(i);
                 valueTV[i][j].setTextColor(Color.WHITE);
 
-               // valueTV.onCl
+
                 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(70, 70);
 
 
@@ -218,12 +208,9 @@ public class MainActivity3 extends ActionBarActivity {
 
 
 
-                       // valueTV[i][j].setTextColor(Color.BLACK);
-                      //  valueTV[i][j].setBackgroundColor(Color.WHITE);
 
 
                 valueTV[i][j].setGravity(Gravity.CENTER);
-                // valueTV.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
                 valueTV[i][j].setPadding(0, 0, 0, 0);
                 valueTV[i][j].setLayoutParams(layoutParams);
 
@@ -249,7 +236,7 @@ public class MainActivity3 extends ActionBarActivity {
         else{
 
 
-              //  System.out.println(diff+minutes+seconds);
+               System.out.println(diff+minutes+seconds);
                 Intent i = new Intent(this, MainActivity4.class);
                 i.putExtra("difficulty", diff);
                 i.putExtra("minutes", minutes);
