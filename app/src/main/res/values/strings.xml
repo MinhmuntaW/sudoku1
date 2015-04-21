@@ -7,5 +7,7 @@
     <string name="title_activity_main_activity2">MainActivity2</string>
     <string name="title_activity_main_activity3">MainActivity3</string>
     <string name="title_activity_main_activity4">MainActivity4</string>
+    <string name="title_activity_serverbesttime">serverbesttime</string>
+    <string name="title_activity_insert_name">insertName</string>
 
 </resources>

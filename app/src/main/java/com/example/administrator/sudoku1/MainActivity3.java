@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.Menu;
@@ -154,7 +155,7 @@ public class MainActivity3 extends ActionBarActivity {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 valueTV[i][j] = new EditText(this);
-
+                valueTV[i][j].setInputType(InputType.TYPE_CLASS_NUMBER);
                 valueTV[i][j].setTextSize(15);
                 if(model[i][j]!=0){
 
@@ -226,7 +227,7 @@ public class MainActivity3 extends ActionBarActivity {
 
 
     public void DoneClicked(View view){
-        pause=1;
+       // pause=1;
         setmatrix();
 
         if(!isValid(board)){
@@ -236,7 +237,7 @@ public class MainActivity3 extends ActionBarActivity {
         else{
 
 
-               System.out.println(diff+minutes+seconds);
+             //  System.out.println(diff+minutes+seconds);
                 Intent i = new Intent(this, MainActivity4.class);
                 i.putExtra("difficulty", diff);
                 i.putExtra("minutes", minutes);
@@ -258,6 +259,8 @@ public class MainActivity3 extends ActionBarActivity {
                     board[i][j] = 0;
 
                 }else{
+
+
                     board[i][j]=Integer.parseInt(text);
                 }
             }
@@ -269,7 +272,8 @@ public class MainActivity3 extends ActionBarActivity {
         for(int i=0;i<9;i++)
         {
             for(int j=0;j<9;j++){
-                if(grid[i][j]<1 || grid[i][j]>9 || isValid(i,j,grid)) {
+                System.out.println("\n\nCHECK ISVALID I = " + i + " GET J  = " + j );
+                if(grid[i][j]<1 || grid[i][j]>9 || !isValid(i,j,grid)) {
                     return false;
                 }
             }
@@ -277,17 +281,27 @@ public class MainActivity3 extends ActionBarActivity {
         return true;
     }
     public static boolean isValid(int i, int j,int[][] grid){
+
+        System.out.println("\n\n LOOP GET I = " + i + " GET J  = " + j );
+
         for(int col=0;col<9;col++) {
+            System.out.println("loop1 = "+grid[i][col]);
+
             if (col != j && grid[i][col] == grid[i][j])
                 return false;
         }
         for(int row=0;row<9;row++) {
-            if (row != j && grid[row][j] == grid[i][j])
+            System.out.println("loop2 = "+grid[row][j]);
+
+            if (row != i && grid[row][j] == grid[i][j])
                 return false;
         }
         for(int row=(i/3)*3;row<(i/3)*3+3;row++) {
-            for (int col = (i / 3) * 3; col < (j / 3) * 3 + 3; col++) {
-                if (row != j && col != j && grid[row][j] == grid[i][j])
+
+            for (int col = (j/ 3) * 3; col < (j / 3) * 3 + 3; col++) {
+                System.out.println("loop3 = "+grid[row][col]);
+
+                if (row != i && col != j && grid[row][col] == grid[i][j])
                     return false;
             }
         }
