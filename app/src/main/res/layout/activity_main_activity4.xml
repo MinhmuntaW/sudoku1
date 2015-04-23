@@ -72,7 +72,7 @@
         android:width="150dp"
         android:layout_marginLeft="-30dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toEndOf="@+id/tv5" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -113,5 +113,14 @@
         android:layout_marginTop="40dp"
         android:layout_below="@+id/tv4"
         android:layout_alignStart="@+id/tv4" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ng ranki"
+        android:id="@+id/button5"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_alignParentEnd="true"
+        android:onClick="globalClicked" />
 
 </RelativeLayout>

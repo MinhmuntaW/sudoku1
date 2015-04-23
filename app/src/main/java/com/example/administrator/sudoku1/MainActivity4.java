@@ -19,24 +19,25 @@ import android.widget.Toast;
 
 public class MainActivity4 extends ActionBarActivity {
 
-
+ String level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity4);
         Toast.makeText(MainActivity4.this, "Congratulations!", Toast.LENGTH_SHORT).show();
-        Intent data = this.getIntent();
 
-        String diff = data.getStringExtra("difficulty");
-       int min = data.getIntExtra("minutes", 0);
-       int sec = data.getIntExtra("seconds", 0);
 
 //        TextView t = (TextView)findViewById(R.id.TV9);
 //        t.setText(diff+Integer.toString(min)+Integer.toString(sec));
 
         SudokuDBHelper helper = new SudokuDBHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
+        SQLiteDatabase db = helper.getWritableDatabase(); Intent data = this.getIntent();
+
+        String diff = data.getStringExtra("diff");
+        level = diff;
+        int min = data.getIntExtra("minute", 0);
+        int sec = data.getIntExtra("second", 0);
         ContentValues r = new ContentValues();
 
         r.put("difficulty",diff);
@@ -79,6 +80,12 @@ public class MainActivity4 extends ActionBarActivity {
     public void backClicked(View v){
 
         Intent a = new Intent(this,MainActivity.class);
+        startActivity(a);
+    }
+    public void globalClicked(View v){
+
+        Intent a = new Intent(this,serverbesttime.class);
+        a.putExtra("level",level);
         startActivity(a);
     }
 

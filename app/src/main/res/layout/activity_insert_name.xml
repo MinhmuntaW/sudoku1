@@ -55,9 +55,9 @@
         android:textSize="20dp"
         android:textColor="#ffffead7"
         android:background="#ff472816"
+        android:onClick="buttonClicked"
         android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
