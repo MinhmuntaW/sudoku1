@@ -232,17 +232,25 @@ public class MainActivity3 extends ActionBarActivity {
 
         if(!isValid(board)){
 
-            Toast.makeText(MainActivity3.this,"Oops! Try again", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MainActivity3.this,"Oops! Try again", Toast.LENGTH_SHORT).show();
+
+            Intent i = new Intent(this,insertName.class);
+            i.putExtra("difficulty", diff);
+            i.putExtra("minutes", minutes);
+            i.putExtra("seconds", seconds);
+            startActivity(i);
+
+
         }
         else{
 
+            Toast.makeText(MainActivity3.this,"Oops! Try again", Toast.LENGTH_SHORT).show();
+//            Intent i = new Intent(this,insertName.class);
+//                i.putExtra("difficulty", diff);
+//                i.putExtra("minutes", minutes);
+//                i.putExtra("seconds", seconds);
+//                startActivity(i);
 
-             //  System.out.println(diff+minutes+seconds);
-                Intent i = new Intent(this, MainActivity4.class);
-                i.putExtra("difficulty", diff);
-                i.putExtra("minutes", minutes);
-                i.putExtra("seconds", seconds);
-                startActivity(i);
 
         }
 

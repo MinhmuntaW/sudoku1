@@ -19,24 +19,25 @@ import android.widget.Toast;
 
 public class MainActivity4 extends ActionBarActivity {
 
-
+    String level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity4);
         Toast.makeText(MainActivity4.this, "Congratulations!", Toast.LENGTH_SHORT).show();
-        Intent data = this.getIntent();
 
-        String diff = data.getStringExtra("difficulty");
-       int min = data.getIntExtra("minutes", 0);
-       int sec = data.getIntExtra("seconds", 0);
 
 //        TextView t = (TextView)findViewById(R.id.TV9);
 //        t.setText(diff+Integer.toString(min)+Integer.toString(sec));
 
         SudokuDBHelper helper = new SudokuDBHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
+        SQLiteDatabase db = helper.getWritableDatabase(); Intent data = this.getIntent();
+
+        String diff = data.getStringExtra("diff");
+        level = diff;
+        int min = data.getIntExtra("minute", 0);
+        int sec = data.getIntExtra("second", 0);
         ContentValues r = new ContentValues();
 
         r.put("difficulty",diff);
@@ -52,19 +53,19 @@ public class MainActivity4 extends ActionBarActivity {
         int[] textViewIds = new int[] {R.id.tv1,R.id.tv2,R.id.tv3,R.id.tv4,R.id.tv5};
         //for(int i=0;i<5;i++) {
         int i = 0;
-            do {
+        do {
 
-                TextView tv = (TextView) findViewById(textViewIds[i]);
+            TextView tv = (TextView) findViewById(textViewIds[i]);
 
-                tv.setText("      "+Integer.toString(i + 1) + "                     " + cursor.getString(0) + "                " + String.format("%02d",cursor.getInt(1)) + " : " + String.format("%02d", cursor.getInt(2)));
+            tv.setText("      "+Integer.toString(i + 1) + "                     " + cursor.getString(0) + "                " + String.format("%02d",cursor.getInt(1)) + " : " + String.format("%02d", cursor.getInt(2)));
 
 
-                System.out.println(cursor.getString(0) + cursor.getInt(1) + cursor.getInt(2));
-                i++;
+            System.out.println(cursor.getString(0) + cursor.getInt(1) + cursor.getInt(2));
+            i++;
 
-            } while (cursor.moveToNext());
+        } while (cursor.moveToNext());
         //}
-     //   String d = cursor.getString(0);
+        //   String d = cursor.getString(0);
 //        int m  = cursor.getInt(1);
 //        int s  = cursor.getInt(2);
 //        System.out.print(d+m+s);
@@ -81,6 +82,12 @@ public class MainActivity4 extends ActionBarActivity {
         Intent a = new Intent(this,MainActivity.class);
         startActivity(a);
     }
+    public void globalClicked(View v){
+
+        Intent a = new Intent(this,serverbesttime.class);
+        a.putExtra("level",level);
+        startActivity(a);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,7 +95,7 @@ public class MainActivity4 extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_main_activity4, menu);
 
 
-       // LinearLayout LL = (LinearLayout) findViewById(R.id.LL);
+        // LinearLayout LL = (LinearLayout) findViewById(R.id.LL);
 
         //LinearLayout layout = (LinearLayout) findViewById(R.id.info);
 //          helper = new SudokuDBHelper(this);
@@ -102,8 +109,8 @@ public class MainActivity4 extends ActionBarActivity {
         return true;
     }
     protected void onActivityResult(int resultCode,Intent data){
-                String diff = data.getStringExtra("difficulty");
-         //   if(resultCode == RESULT_OK) {
+        String diff = data.getStringExtra("difficulty");
+        //   if(resultCode == RESULT_OK) {
 //                minutes = data.getIntExtra("minutes", 0);
 //                seconds = data.getIntExtra("seconds", 0);
 //         //   }
@@ -121,7 +128,7 @@ public class MainActivity4 extends ActionBarActivity {
 //                long new_id = db.insert("sudoku",null,r);
 
 
-       // Log.d("sudoku", "onActivityResult");
+        // Log.d("sudoku", "onActivityResult");
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

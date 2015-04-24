@@ -16,8 +16,7 @@
         android:textColor="#ff811e0b"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textView9"
-        android:layout_marginTop="20dp" />
+        android:layout_alignStart="@+id/textView9" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,37 +26,9 @@
         android:textSize="35dp"
         android:textColor="#ff811e0b"
         android:textStyle="bold"
-        android:layout_marginTop="56dp"
-        android:layout_below="@+id/textView16"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_marginTop="78dp"
-        android:textSize="40dp"
-        android:background="#ffffff"
-        android:layout_below="@+id/textView9"
+        android:layout_below="@+id/textView17"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:width="300dp"
-        android:height="60dp"
-        android:singleLine="true"
-        android:textColor="#ff7b4e1d" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ENTER"
-        android:id="@+id/button2"
-        android:width="100dp"
-        android:textSize="20dp"
-        android:textColor="#ffffead7"
-        android:background="#ff472816"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,6 +39,46 @@
         android:textSize="30dp"
         android:layout_below="@+id/textView6"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp" />
+        android:layout_marginTop="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ENTER"
+        android:id="@+id/button2"
+        android:width="100dp"
+        android:textSize="20dp"
+        android:textColor="#ffffead7"
+        android:background="#ff472816"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:onClick="buttonClicked" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/textView9"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/insertbox"
+        android:layout_above="@+id/button2"
+        android:layout_marginBottom="60dp"
+        android:textSize="30dp"
+        android:textColor="#ff42250f"
+        android:paddingLeft="15dp"
+        android:layout_alignParentStart="false" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textView17"
+        android:height="2dp"
+        android:background="#ff361b0e"
+        android:layout_below="@+id/textView16"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_marginTop="15dp" />
 
 </RelativeLayout>
