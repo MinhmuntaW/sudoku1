@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+
+        android:id="@+id/Number"
+
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1"
+
+        android:text="No."
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="#ff551f13"
+        android:layout_marginLeft="15dp" />
+
+
+
+    <TextView
+
+        android:id="@+id/Name"
+
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1.42"
+
+        android:text="Name"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="#ff551f13" />
+
+
+
+    <TextView
+
+        android:id="@+id/level"
+
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1.16"
+
+        android:text="Level"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="#ff551f13" />
+
+    <TextView
+
+        android:id="@+id/time"
+
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1"
+
+        android:text="Time"
+        android:textSize="20dp"
+        android:textIsSelectable="false"
+        android:textAlignment="center"
+        android:textColor="#ff551f13" />
+
+</LinearLayout>

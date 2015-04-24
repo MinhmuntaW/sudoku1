@@ -20,7 +20,8 @@ import android.widget.Toast;
 public class MainActivity4 extends ActionBarActivity {
 
     String level;
-
+    int min;
+    int sec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +37,8 @@ public class MainActivity4 extends ActionBarActivity {
 
         String diff = data.getStringExtra("diff");
         level = diff;
-        int min = data.getIntExtra("minute", 0);
-        int sec = data.getIntExtra("second", 0);
+         min = data.getIntExtra("minute", 0);
+         sec = data.getIntExtra("second", 0);
         ContentValues r = new ContentValues();
 
         r.put("difficulty",diff);
@@ -86,6 +87,9 @@ public class MainActivity4 extends ActionBarActivity {
 
         Intent a = new Intent(this,serverbesttime.class);
         a.putExtra("level",level);
+        a.putExtra("min",min);
+        a.putExtra("sec",sec);
+
         startActivity(a);
     }
 

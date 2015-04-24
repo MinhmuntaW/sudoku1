@@ -143,11 +143,11 @@ public class insertName extends ActionBarActivity {
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
-                /*Toast t = Toast.makeText(insertName.this.getApplicationContext(),
+                Toast t = Toast.makeText(insertName.this.getApplicationContext(),
                         "Successfully post ",
                         Toast.LENGTH_SHORT);
                 t.show();
-*/
+
 
 
 

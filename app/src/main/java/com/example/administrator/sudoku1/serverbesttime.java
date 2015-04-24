@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -28,27 +29,48 @@ import java.util.Map;
 
 
 public class serverbesttime extends ActionBarActivity {
-    ArrayList<Map<String, String>> data;
+    ArrayList<HashMap<String, String>> data;
     SimpleAdapter adapter;
     String user;
     String Sl;
+    int min;
+    int sec;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serverbesttime);
-        data = new ArrayList<Map<String, String>>();
-        adapter = new SimpleAdapter(this,data,android.R.layout.simple_list_item_1,
-                new String[] {"message"},
-                new int[] {android.R.id.text1});
+        Intent i = this.getIntent();
+        Sl = i.getStringExtra("level");
+        min = i.getIntExtra("min",0);
+        sec = i.getIntExtra("sec",0);
+
+        TextView tv = (TextView) findViewById(R.id.textView10);
+        tv.setText(String.format("%02d:%02d", min, sec));
+
+//        data = new ArrayList<Map<String, String>>();
+//        adapter = new SimpleAdapter(this,data,android.R.layout.simple_list_item_1,
+//                new String[] {"message"},
+//                new int[] {android.R.id.text1});
+
+
+
+
+       data = new ArrayList<HashMap<String, String>>();
+
+       adapter= new SimpleAdapter(this, data, R.layout.activity_column,
+                new String[] {"number", "name", "level","time"}, new int[] {R.id.Number, R.id.Name, R.id.level,R.id.time});
+
         ListView l = (ListView)findViewById(R.id.listView);
         l.setAdapter(adapter);
+
+
         LoadMessageTask task = new LoadMessageTask();
         task.execute();
 
-        Intent i = this.getIntent();
-        Sl = i.getStringExtra("level");
-        System.out.println(Sl);
+
+ //       System.out.println(Sl);
     }
 
 
@@ -58,6 +80,7 @@ public class serverbesttime extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_serverbesttime, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -72,6 +95,11 @@ public class serverbesttime extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void mainmenuClicked(View v){
+
+        Intent a = new Intent(this,MainActivity.class);
+        startActivity(a);
     }
 
     class LoadMessageTask extends AsyncTask<String, Void, Boolean> {
@@ -88,7 +116,7 @@ public class serverbesttime extends ActionBarActivity {
             int sec;
 
             try {
-                Log.e("LoadMessageTask",Sl);
+//                Log.e("LoadMessageTask",Sl);
                 URL u = new URL("http://ict.siit.tu.ac.th/~u5522770148/its333/fetch.php?level="
                         + Sl);
                 HttpURLConnection h = (HttpURLConnection) u.openConnection();
@@ -103,7 +131,7 @@ public class serverbesttime extends ActionBarActivity {
                         buffer.append(line);
                     }
 
-                    Log.e("LoadMessageTaskdd", buffer.toString());
+//                    Log.e("LoadMessageTaskdd", buffer.toString());
                     //Parsing JSON and displaying messages
 
                     //To append a new message:
@@ -129,12 +157,16 @@ public class serverbesttime extends ActionBarActivity {
                         min = jMessages.getInt("min");
                         sec = jMessages.getInt("sec");
                         Log.d("printJSON",uname+" " + messages +" "+min+" "+sec );
-                        Map<String, String> item = new HashMap<String, String>();
 
+                        HashMap<String, String> item;
+                        item= new HashMap<String, String>();
 
-                        item.put("message", uname+" " + messages +" "+min+" "+sec);
+                        item.put("number",""+(msgArray.length()-i));
+                        item.put("name",uname);
+                        item.put("level",messages);
+                        item.put("time",String.format("%02d:%02d", min, sec));
 
-                        data.add(0, item);
+                        data.add(0,item);
 
                     }
 
